@@ -1,14 +1,14 @@
 
 check_bimodality_robertson<-function(data)
 {
+
 	a<-data
 	library(mixtools)
-  mu1<-NULL
-  mu2<-NULL
-  sig1<-NULL
-  sig2<-NULL
-  sig2<-NULL
-  prop<-NULL
+  mu1<-rep(NA,dim(a)[1])
+  mu2<-rep(NA,dim(a)[1])
+  sig1<-rep(NA,dim(a)[1])
+  sig2<-rep(NA,dim(a)[1])
+  prop<-rep(NA,dim(a)[1])
   for(k in 1:(dim(a)[1]))
   {
     if(sum(a[k,]>0)<3)
@@ -31,14 +31,16 @@ check_bimodality_robertson<-function(data)
   }
 
 d<-dim(data)
+data <- t(a)
 D<-array(0,dim<-dim(data))
-mu1<-NULL
-mu2<-NULL
-sig1<-NULL
-sig2<-NULL
-pi<-NULL
+mu1<- rep(NA,length(mu1))
+mu2<- rep(NA,length(mu2))
+sig1<- rep(NA,length(sig1))
+sig2<- rep(NA,length(sig2))
+pi<- rep(NA,length(prop))
 
-for(j in 1:(d[2]))
+
+for(j in 1:(d[1]))
 {
   if(sum(data[,j]>0)<0.0001)
   {
@@ -94,21 +96,41 @@ for(j in 1:(d[2]))
     {
       yy<-log(data[(data[,j]>0),j])
       Me<-median(yy)
+      if(length(yy)<3)
+      {
+         mu1[j] <- mean(yy)
+         mu2[j] <- mean(yy)
+         sig1[j] <- 0
+         sig2[j] <- 0
+         pi[j] <- 0.5
+      }else
+     {
+      mu1[j]<-mean(yy[yy<=Me])
+      mu2[j]<-mean(yy[yy>Me])
+      sig1[j]<-sd(yy[yy<=Me])
+      sig2[j]<-sd(yy[yy>Me])
+      pi[j]<-0.5
+      }
+    }
+    if((sig1[j])==0)
+    {
+      yy<-log(data[(data[,j]>0),j])
+      Me<-median(yy)
+      if(length(yy)<3)
+      {
+         mu1[j] <- mean(yy)
+         mu2[j] <- mean(yy)
+         sig1[j] <- 0
+         sig2[j] <- 0
+         pi[j] <- 0.5
+      }else
+     {
       mu1[j]<-mean(yy[yy<=Me])
       mu2[j]<-mean(yy[yy>Me])
       sig1[j]<-sd(yy[yy<=Me])
       sig2[j]<-sd(yy[yy>Me])
       pi[j]<-0.5
     }
-    if((sig1[j])==0)
-    {
-      yy<-log(data[(data[,j]>0),j])
-      Me<-median(yy)
-      mu1[j]<-mean(yy[yy<=Me])
-      mu2[j]<-mean(yy[yy>Me])
-      sig1[j]<-sd(yy[yy<=Me])
-      sig2[j]<-sd(yy[yy>Me])
-      pi[j]<-0.5
     }
     if(mu1[j]<(-10))
     {
@@ -131,6 +153,8 @@ for(j in 1:(d[2]))
   print(j)
 }
 
+
+
 prop<-pi
 d<-abs(mu1-mu2)/(2*sqrt(sig1*sig2))
 stat1<-abs(log(1-prop)-log(prop))
@@ -146,21 +170,21 @@ sigg<-sig2/sig1
 x1<-abs(mu1-mu2)
 x2<-sig1*((2*(sigg^4-sigg^2+1)^(3/2)-(2*sigg^6-3*sigg^4-3*sigg^2+2))/(sigg^2))^(1/2)
 
-muu1<-NULL
-muu2<-NULL
-sigg1<-NULL
-sigg2<-NULL
-muu0<-NULL
-sigg<-NULL
-muu<-NULL
-root1<-NULL
-root2<-NULL
-ci1<-NULL
-ci2<-NULL
-index<-NULL
-y1<-NULL
-y2<-NULL
-pp<-NULL
+muu1<-rep(NA,length(mu1))
+muu2<-rep(NA,length(mu1))
+sigg1<-rep(NA,length(mu1))
+sigg2<-rep(NA,length(mu1))
+muu0<-rep(NA,length(mu1))
+sigg<-rep(NA,length(mu1))
+muu<-rep(NA,length(mu1))
+root1<-rep(NA,length(mu1))
+root2<-rep(NA,length(mu1))
+ci1<-rep(NA,length(mu1))
+ci2<-rep(NA,length(mu1))
+index<-rep(NA,length(mu1))
+y1<-rep(NA,length(mu1))
+y2<-rep(NA,length(mu1))
+pp<-rep(NA,length(mu1))
 
 library(RConics)
 for(i in 1:(length(mu1)))
@@ -187,6 +211,12 @@ for(i in 1:(length(mu1)))
   muu[i]<-(muu2[i]-muu1[i])/sigg1[i]
   sigg[i]<-sigg2[i]/sigg1[i]
   muu0[i]<-sqrt((2*(sigg[i]^4-sigg[i]^2+1)^(3/2)-(2*sigg[i]^6-3*sigg[i]^4-3*sigg[i]^2+2))/(sigg[i]^2))
+
+  if(is.na(muu[i]+muu0[i]))
+  {
+     index[i] <- FALSE
+  }else
+  {   
   if(muu[i]<muu0[i])
   {
     index[i]<-TRUE
@@ -199,6 +229,7 @@ for(i in 1:(length(mu1)))
     ci1[i]<-1/(1+(sigg[i]^3*y1[i])/(muu[i]-y1[i])*exp(-0.5*y1[i]^2+0.5*(y1[i]-muu[i])^2/(sigg[i]^2)))
     ci2[i]<-1/(1+(sigg[i]^3*y2[i])/(muu[i]-y2[i])*exp(-0.5*y2[i]^2+0.5*(y2[i]-muu[i])^2/(sigg[i]^2)))
   }
+  }
 
 }
 
@@ -206,6 +237,8 @@ indd[((Re(ci1)<pp)&(Re(ci2)>pp)&(x1>x2))]<-1
 indd[is.na(indd)]<-0
 
 lst<-list(indd=indd,mu1=mu1,mu2=mu2,sig1=sig1,sig2=sig2,pi=pi,D=D)
+
+
 
 return(lst)
 
