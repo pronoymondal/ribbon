@@ -1,11 +1,6 @@
 likelihood_bimodal<-function(data,data1,data2)
 {
 
-  data <- data11
-  data1 <- data111
-  data2 <- data121
-
-
     mu1 <- rep(NA, dim(data)[2])
     mu2 <- rep(NA, dim(data)[2])
     sig1 <- rep(NA, dim(data)[2])
