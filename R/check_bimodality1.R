@@ -34,6 +34,7 @@ check_bimodality<-function(a)
   indd[d<1]<-0
   indd[(d>1)&(stat1>stat2)]<-0
   indd[(d>1)&(stat1<stat2)]<-1
+  indd[is.na(indd)] <- 0
   return(indd)
 }
 
