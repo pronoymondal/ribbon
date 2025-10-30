@@ -16,7 +16,22 @@ data.dir <- paste0(getwd(),"2.5k_rhesus_monkey/")
 library(Seurat)
 data <- Read10X_h5(filename = paste0(data.dir,"2500_Rhesus_Monkey_PBMCs_Singleplex_5p_gem-x_Universal_2500_Rhesus_Monkey_PBMCs_Singleplex_5p_gem-x_Universal_count_sample_filtered_feature_bc_matrix.h5"))       
 ```
+##Normalize the dataset
+```
+cell_sums <- colSums(data)
+cpm_data <- t(t(data) / cell_sums) * 1e6
+```
+
 
 ##Testing for bimodality
 #Using Robertson's criterion:
+```
+bimodal <- check_bimodality_robertson(cpm_data)
+```
+#Using Holzman and Volmer's criterion:
+```
+bimodal <- check_bimodality(cpm_data)
+```
+
+
 
