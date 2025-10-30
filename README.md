@@ -43,6 +43,10 @@ bimodal_parameters <- estimate_bimodal(cpm_data[(bimodal_hv$indd==1),],mu1[(bimo
 ```
 unimodal_parameters <- estimate_bimodal(cpm_data[(bimodal_hv$indd==0),])
 ```
+## Estimate paramaters for the unimodal and the bimodal distribution manually
+```
+patams <- ribbon_estimate(cpm_data)
+```
 
 
 
