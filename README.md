@@ -28,12 +28,22 @@ cpm_data <- t(t(data) / cell_sums) * 1e6
 ## Testing for bimodality
 ### Using Robertson's criterion:
 ```
-bimodal <- check_bimodality_robertson(cpm_data)
+bimodal_r <- check_bimodality_robertson(cpm_data)
 ```
 ### Using Holzman and Volmer's criterion:
 ```
-bimodal <- check_bimodality(cpm_data)
+bimodal_hv <- check_bimodality(cpm_data)
 ```
+
+## Estimate parameters for the bimodal distribution
+```
+bimodal_parameters <- estimate_bimodal(cpm_data[(bimodal_hv$indd==1),],mu1[(bimodal_hv$indd==1)],mu2[(bimodal_hv$indd==1)],sig1[(bimodal_hv$indd==1)],sig2[(bimodal_hv$indd==1)],pi[(bimodal_hv$indd==1)],D[(bimodal_hv$indd==1),(bimodal_hv$indd==1)])
+```
+
+
+
+
+
 
 
 
