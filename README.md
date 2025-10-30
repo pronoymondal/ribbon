@@ -8,3 +8,15 @@ install.packages("devtools")
 library(devtools)
 install_github('pronoymondal/ribbon',ref='HEAD')
 ```
+
+##Load the dataset
+```
+data.dir <- paste0(getwd(),"2.5k_rhesus_monkey/")
+
+library(Seurat)
+data <- Read10X_h5(filename = paste0(data.dir,"2500_Rhesus_Monkey_PBMCs_Singleplex_5p_gem-x_Universal_2500_Rhesus_Monkey_PBMCs_Singleplex_5p_gem-x_Universal_count_sample_filtered_feature_bc_matrix.h5"))       
+```
+
+##Testing for bimodality
+#Using Robertson's criterion:
+
