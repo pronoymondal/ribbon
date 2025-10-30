@@ -2,8 +2,8 @@
 check_bimodality_robertson<-function(data)
 {
 
-	a<-data
-	library(mixtools)
+  a<-data
+  library(mixtools)
   mu1<-rep(NA,dim(a)[1])
   mu2<-rep(NA,dim(a)[1])
   sig1<-rep(NA,dim(a)[1])
