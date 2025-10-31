@@ -93,7 +93,7 @@ if((dim(data2)[2])>0)
 }
 
 
-if((dim(t(t(data1)))[2])>0)
+if((dim(data1)[2])>0)
 {
   indd<-check_bimodality(t(data1))
 
@@ -113,7 +113,7 @@ if((dim(t(t(data1)))[2])>0)
 
 }
 
-if((dim(t(t(data3)))[2])>0)
+if((dim(data3)[2])>0)
 {
   indd<-check_bimodality(t(data3))
 
@@ -157,7 +157,7 @@ stat31<-likelihood_bimodal(data31,data311,data321)
 }
 if("data11"%in%(ls()))
 {
-if(dim(t(t(data11)))[2]>0)
+if(dim(data11)[2]>0)
 {
   stat11<-likelihood_bimodal(data11,data111,data121)
 }
@@ -166,14 +166,14 @@ if(dim(t(t(data11)))[2]>0)
 
 if("data32"%in%(ls()))
 {
-if(dim(t(t(data32)))[2]>0)
+if(dim(data32)[2]>0)
 {
 stat32<-likelihood_bimodal(t(t(data32)),t(t(data312)),t(t(data322)))
 }
 }
 if("data12"%in%(ls()))
 {
-if(dim(t(t(data12)))[2]>0)
+if(dim(data12)[2]>0)
 {
   stat12<-likelihood_bimodal(data12,data112,data122)
 }
@@ -181,7 +181,7 @@ if(dim(t(t(data12)))[2]>0)
 
 if("data21"%in%(ls()))
 {
-if(dim(t(t(data21)))[2]>0)
+if(dim(data21)[2]>0)
 {
   stat21<-likelihood_bimodal(data21,data211,data221)
 }
@@ -189,7 +189,7 @@ if(dim(t(t(data21)))[2]>0)
 
 if("data22"%in%(ls()))
 {
-if(dim(t(t(data22)))[2]>0)
+if(dim(data22)[2]>0)
 {
   stat22<-likelihood_bimodal(data22,data212,data222)
 }
@@ -198,7 +198,7 @@ if(dim(t(t(data22)))[2]>0)
 
 if("data21"%in%(ls()))
 {
-if(dim(t(t(data21)))[2]>0)
+if(dim(data21)[2]>0)
 {
   statt21<-zero_statistic(data21>0,data211>0,data221>0)
 }
@@ -206,7 +206,7 @@ if(dim(t(t(data21)))[2]>0)
 
 if("data22"%in%(ls()))
 {
-if(dim(t(t(data22)))[2]>0)
+if(dim(data22)[2]>0)
 {
   statt22<-zero_statistic(data22>0,data212>0,data222>0)
 }
@@ -215,7 +215,7 @@ if(dim(t(t(data22)))[2]>0)
 
 if("data11"%in%(ls()))
 {
-  if(dim(t(t(data11)))[2]>0)
+  if(dim(data11)[2]>0)
   {
     statt11<-zero_statistic(data11>0,data111>0,data121>0)
   }
@@ -223,7 +223,7 @@ if("data11"%in%(ls()))
 
 if("data12"%in%(ls()))
 {
-  if(dim(t(t(data12)))[2]>0)
+  if(dim(data12)[2]>0)
   {
     statt12<-zero_statistic(data12>0,data112>0,data122>0)
   }
@@ -231,7 +231,7 @@ if("data12"%in%(ls()))
 
 if("data31"%in%(ls()))
 {
-  if(dim(t(t(data31)))[2]>0)
+  if(dim(data31)[2]>0)
   {
     statt31<-zero_statistic(data31>0,data311>0,data321>0)
   }
@@ -239,7 +239,7 @@ if("data31"%in%(ls()))
 
 if("data32"%in%(ls()))
 {
-  if(dim(t(t(data32)))[2]>0)
+  if(dim(data32)[2]>0)
   {
     statt32<-zero_statistic(data32>0,data312>0,data322>0)
   }
