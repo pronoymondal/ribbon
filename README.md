@@ -45,15 +45,15 @@ unimodal_parameters <- estimate_bimodal(cpm_data[(bimodal_hv$indd==0),])
 ```
 ## Estimate paramaters for the unimodal and the bimodal distribution manually
 ```
-patams <- ribbon_estimate(cpm_data)
+params <- ribbon_estimate(cpm_data)
 ```
 ## Calculate p-values using RIBBON bimodal
 ```
-patams <- ribbon_de_bimodal(t(cpm_data[,1:1280]),t(cpm_data[,1281:2560]))
+bimodal_stats <- ribbon_de_bimodal(t(cpm_data[,1:1280]),t(cpm_data[,1281:2560]))
 ```
 ## Calculate p-values using RIBBON unimodal
 ```
-patams <- ribbon_de_unimodal(t(cpm_data[,1:1280]),t(cpm_data[,1281:2560]))
+unimodal_stats <- ribbon_de_unimodal(t(cpm_data[,1:1280]),t(cpm_data[,1281:2560]))
 ```
 
 
