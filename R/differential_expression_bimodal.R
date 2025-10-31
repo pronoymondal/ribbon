@@ -77,7 +77,7 @@ if((dim(data2)[2])>0)
   data212<-dataa21[,(indd==1)]
 
   data221<-dataa22[,(indd==0)]
-  data222<-t(t(dataa22[,(indd==1)]
+  data222<-dataa22[,(indd==1)]
 
   prob21<-colMeans(data21>0)
   prob22<-colMeans(data22>0)
