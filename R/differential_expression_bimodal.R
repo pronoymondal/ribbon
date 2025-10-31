@@ -168,7 +168,7 @@ if("data32"%in%(ls()))
 {
 if(dim(data32)[2]>0)
 {
-stat32<-likelihood_bimodal(t(t(data32)),t(t(data312)),t(t(data322)))
+stat32<-likelihood_bimodal(data32,data312,data322)
 }
 }
 if("data12"%in%(ls()))
