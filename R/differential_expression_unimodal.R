@@ -68,14 +68,14 @@ if((dim(data2)[2])>0)
 
   indd[is.na(indd)]<-0
 
-  data21<-t(t(data2[,(indd==0)]))
-  data22<-t(t(data2[,(indd==1)]))
+  data21<-data2[,(indd==0)]
+  data22<-data2[,(indd==1)]
 
-  data211<-t(t(dataa21[,(indd==0)]))
-  data212<-t(t(dataa21[,(indd==1)]))
+  data211<-dataa21[,(indd==0)]
+  data212<-dataa21[,(indd==1)]
 
-  data221<-t(t(dataa22[,(indd==0)]))
-  data222<-t(t(dataa22[,(indd==1)]))
+  data221<-dataa22[,(indd==0)]
+  data222<-dataa22[,(indd==1)]
 
   prob21<-colMeans(data21>0)
   prob22<-colMeans(data22>0)
@@ -97,14 +97,14 @@ if((dim(t(t(data1)))[2])>0)
 
   indd[is.na(indd)]<-0
 
-  data11<-t(t(t(t(data1))[,(indd==0)]))
-  data12<-t(t(t(t(data1))[,(indd==1)]))
+  data11<-data1[,(indd==0)]
+  data12<-data1[,(indd==1)]
 
-  data111<-t(t(t(t(dataa11))[,(indd==0)]))
-  data112<-t(t(t(t(dataa11))[,(indd==1)]))
+  data111<-dataa11[,(indd==0)]
+  data112<-dataa11[,(indd==1)]
 
-  data121<-t(t(t(t(dataa12))[,(indd==0)]))
-  data122<-t(t(t(t(dataa12))[,(indd==1)]))
+  data121<-dataa12[,(indd==0)]
+  data122<-dataa12[,(indd==1)]
 
   names11<-colnames(data11)
   names12<-colnames(data12)
@@ -117,14 +117,14 @@ if((dim(t(t(data3)))[2])>0)
 
   indd[is.na(indd)]<-0
 
-  data31<-t(t(t(t(data3))[,(indd==0)]))
-  data32<-t(t(t(t(data3))[,(indd==1)]))
+  data31<-data3[,(indd==0)]
+  data32<-data3[,(indd==1)]
 
-  data311<-t(t(t(t(dataa31))[,(indd==0)]))
-  data312<-t(t(t(t(dataa31))[,(indd==1)]))
+  data311<-dataa31[,(indd==0)]
+  data312<-dataa31[,(indd==1)]
 
-  data321<-t(t(t(t(dataa32))[,(indd==0)]))
-  data322<-t(t(t(t(dataa32))[,(indd==1)]))
+  data321<-dataa32[,(indd==0)]
+  data322<-dataa32[,(indd==1)]
 
   names31<-colnames(data31)
   names32<-colnames(data32)
@@ -149,20 +149,20 @@ statt32<-NULL
 
 if(dim(t(t(data1)))[2]>0)
 {
-stat1<-likelihood_unimodal(t(t(data1)),t(t(dataa11)),t(t(dataa12)))
+stat1<-likelihood_unimodal(data1,dataa11,dataa12)
 }
 if("data31"%in%(ls()))
 {
 if(dim(t(t(data31)))[2]>0)
 {
-stat31<-likelihood_unimodal(t(t(data31)),t(t(data311)),t(t(data321)))
+stat31<-likelihood_unimodal(data31,data311,data321)
 }
 }
 if("data11"%in%(ls()))
 {
 if(dim(t(t(data11)))[2]>0)
 {
-  stat11<-likelihood_unimodal(t(t(data11)),t(t(data111)),t(t(data121)))
+  stat11<-likelihood_unimodal(data11,data111,data121)
 }
 }
 
@@ -171,14 +171,14 @@ if("data32"%in%(ls()))
 {
 if(dim(t(t(data32)))[2]>0)
 {
-stat32<-likelihood_unimodal(t(t(data32)),t(t(data312)),t(t(data322)))
+stat32<-likelihood_unimodal(data32,data312,data322)
 }
 }
 if("data12"%in%(ls()))
 {
 if(dim(t(t(data12)))[2]>0)
 {
-  stat12<-likelihood_unimodal(t(t(data12)),t(t(data112)),t(t(data122)))
+  stat12<-likelihood_unimodal(data12,data112,data122)
 }
 }
 
@@ -187,7 +187,7 @@ if("data21"%in%(ls()))
 {
 if(dim(t(t(data21)))[2]>0)
 {
-  stat21<-likelihood_unimodal(t(t(data21)),t(t(data211)),t(t(data221)))
+  stat21<-likelihood_unimodal(data21,data211,data221)
 }
 }
 
@@ -196,7 +196,7 @@ if("data22"%in%(ls()))
 {
 if(dim(t(t(data22)))[2]>0)
 {
-  stat22<-likelihood_unimodal(t(t(data22)),t(t(data212)),t(t(data222)))
+  stat22<-likelihood_unimodal(data22,data212,data222)
 }
 }
 
@@ -205,7 +205,7 @@ if("data21"%in%(ls()))
 {
 if(dim(t(t(data21)))[2]>0)
 {
-  statt21<-zero_statistic(t(t(data21>0)),t(t(data211>0)),t(t(data221>0)))
+  statt21<-zero_statistic(data21>0,data211>0,data221>0)
 }
 }
 
@@ -213,7 +213,7 @@ if("data22"%in%(ls()))
 {
 if(dim(t(t(data22)))[2]>0)
 {
-  statt22<-zero_statistic(t(t(data22>0)),t(t(data212>0)),t(t(data222>0)))
+  statt22<-zero_statistic(data22>0,data212>0,data222>0)
 }
 }
 
@@ -222,7 +222,7 @@ if("data11"%in%(ls()))
 {
   if(dim(t(t(data11)))[2]>0)
   {
-    statt11<-zero_statistic(t(t(data11>0)),t(t(data111>0)),t(t(data121>0)))
+    statt11<-zero_statistic(data11>0,data111>0,data121>0)
   }
 }
 
@@ -230,7 +230,7 @@ if("data12"%in%(ls()))
 {
   if(dim(t(t(data12)))[2]>0)
   {
-    statt12<-zero_statistic(t(t(data12>0)),t(t(data112>0)),t(t(data122>0)))
+    statt12<-zero_statistic(data12>0,data112>0,data122>0)
   }
 }
 
@@ -239,7 +239,7 @@ if("data31"%in%(ls()))
 {
   if(dim(t(t(data31)))[2]>0)
   {
-    statt31<-zero_statistic(t(t(data31>0)),t(t(data311>0)),t(t(data321>0)))
+    statt31<-zero_statistic(data31>0,data311>0,data321>0)
   }
 }
 
@@ -247,7 +247,7 @@ if("data32"%in%(ls()))
 {
   if(dim(t(t(data32)))[2]>0)
   {
-    statt32<-zero_statistic(t(t(data32>0)),t(t(data312>0)),t(t(data322>0)))
+    statt32<-zero_statistic(data32>0,data312>0,data322>0)
   }
 }
 
