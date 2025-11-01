@@ -52,7 +52,12 @@ bimodal_parameters <- estimate_bimodal(cpm_data[(bimodal_hv$indd==1),],mu1[(bimo
 bimodal_parameters$mu1 = Mean parameter of the lower mode.<br />
 bimodal_parameters$mu2 = Mean parameter of the larger mode.<br />
 bimodal_parameters$tau1 = $\tau_1^2$ parameter of RIBBON bimodal.<br />
-bimodal_parameters$tau2 = Mean parameter of the larger mode.<br />
+bimodal_parameters$tau2 = $\tau_2^2$ parameter of RIBBON bimodal.<br />
+bimodal_parameters$c = $c$ parameter of RIBBON bimodal.<br />
+bimodal_parameters$alpha1 = $\alpha_1$ parameter of RIBBON bimodal.<br />
+bimodal_parameters$alpha2 = $\alpha_2$ parameter of RIBBON bimodal.<br />
+bimodal_parameters$sig1 = Standard deviation parameter of the lower mode.<br />
+bimodal_parameters$sig2 = Standard deviation parameter of the larger mode.<br />
 ## Estimate parameters for the unimodal distribution
 ```
 unimodal_parameters <- estimate_bimodal(cpm_data[(bimodal_hv$indd==0),])
