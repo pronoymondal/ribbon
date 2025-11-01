@@ -1,4 +1,4 @@
-check_bimodality_hv<-function(a)
+check_bimodality<-function(a)
 {
   library(mixtools)
   mu1<-NULL
