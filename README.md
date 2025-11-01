@@ -73,14 +73,22 @@ unimodal_parameters$c = $c$ parameter of the RIBBON unimodal.<br />
 ```
 params <- ribbon_estimate(cpm_data)
 ```
+### Output
+params$indd = Index denoting whether a gene is bimodal or unimodal, 1 implying bimodal and 0 implying unimodal.<br />
+params$xxx1 = List containing output of the function "estimate_bimodal" on genes having bimodal expression.<br />
+params$xxx2 = List containing output of the function "estimate_unimodal" on genes having unimodal expression.
 ## Calculate p-values using RIBBON bimodal
 ```
 bimodal_stats <- ribbon_de_bimodal(t(cpm_data[,1:1280]),t(cpm_data[,1281:2560]))
 ```
+### Output
+bimodal_stats : p-value on applying RIBBON II on the two input datasets
 ## Calculate p-values using RIBBON unimodal
 ```
 unimodal_stats <- ribbon_de_unimodal(t(cpm_data[,1:1280]),t(cpm_data[,1281:2560]))
 ```
+### Output
+unimodal_stats : p-value on applying RIBBON I on the two input datasets
 
 
 
