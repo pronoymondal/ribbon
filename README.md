@@ -39,6 +39,12 @@ bimodal_hv <- check_bimodality(cpm_data)
 ```
 bimodal_parameters <- estimate_bimodal(cpm_data[(bimodal_hv$indd==1),],mu1[(bimodal_hv$indd==1)],mu2[(bimodal_hv$indd==1)],sig1[(bimodal_hv$indd==1)],sig2[(bimodal_hv$indd==1)],pi[(bimodal_hv$indd==1)],D[(bimodal_hv$indd==1),(bimodal_hv$indd==1)])
 ```
+### Output
+bimodal_parameters$indd = Index denoting whether the expression of a given gene is bimodal or not, 1 denoting bimodal, 0 denoting unimodal.
+bimodal_parameters$mu1 = Mean parameter of the lower mode
+bimodal_parameters$mu2 = Mean parameter of the larger mode
+bimodal_parameters$sd1 = Standard deviation parameter of the lower mode
+bimodal_parameters$sd2 = Standard deviation parameter of the larger mode
 ## Estimate parameters for the unimodal distribution
 ```
 unimodal_parameters <- estimate_bimodal(cpm_data[(bimodal_hv$indd==0),])
