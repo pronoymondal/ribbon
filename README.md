@@ -58,6 +58,7 @@ bimodal_parameters$alpha1 = $\alpha_1$ parameter of RIBBON bimodal.<br />
 bimodal_parameters$alpha2 = $\alpha_2$ parameter of RIBBON bimodal.<br />
 bimodal_parameters$sig1 = Standard deviation parameter of the lower mode.<br />
 bimodal_parameters$sig2 = Standard deviation parameter of the larger mode.<br />
+bimodal_parameters$pi = $\pi$ parameter of RIBBON bimodal.<br />
 ## Estimate parameters for the unimodal distribution
 ```
 unimodal_parameters <- estimate_bimodal(cpm_data[(bimodal_hv$indd==0),])
