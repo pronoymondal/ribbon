@@ -63,6 +63,12 @@ bimodal_parameters$pi = $\pi$ parameter of RIBBON bimodal.<br />
 ```
 unimodal_parameters <- estimate_bimodal(cpm_data[(bimodal_hv$indd==0),])
 ```
+### Output
+unimodal_parameters$mu = Mean parameter of the RIBBON unimodal.<br />
+unimodal_parameters$alpha = $\alpha$ parameter of the RIBBON unimodal.<br />
+unimodal_parameters$tau = $\tau^2$ parameter of the RIBBON unimodal.<br />
+unimodal_parameters$sigma = Standard deviation parameter of the RIBBON unimodal.<br />
+unimodal_parameters$c = $c$ parameter of the RIBBON unimodal.<br />
 ## Estimate paramaters for the unimodal and the bimodal distribution manually
 ```
 params <- ribbon_estimate(cpm_data)
