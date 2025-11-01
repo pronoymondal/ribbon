@@ -26,7 +26,7 @@ cpm_data <- t(t(data) / cell_sums) * 1e6
 
 
 ## Testing for bimodality
-### Using Robertson's criterion:
+## Using Robertson's criterion:
 ```
 bimodal_r <- check_bimodality_robertson(cpm_data)
 ```
@@ -38,15 +38,21 @@ bimodal_r$sig1 = Standard deviation parameter of the lower mode.<br />
 bimodal_r$sig2 = Standard deviation parameter of the larger mode.<br />
 bimodal_r$pi = Mixing proportion parameter.<br />
 bimodal_r$D = An array with dimension nCells x nGenes. The (i.j)-th entry denotes the probability that the i-th cell has expression in the larger mode for gene j.
-### Using Holzman and Volmer's criterion:
+## Using Holzman and Volmer's criterion:
 ```
 bimodal_hv <- check_bimodality(cpm_data)
 ```
-
+### Output
+bimodal_hv = Index denoting whether the expression of a given gene is bimodal or not, 1 denoting bimodal, 0 denoting unimodal
 ## Estimate parameters for the bimodal distribution
 ```
 bimodal_parameters <- estimate_bimodal(cpm_data[(bimodal_hv$indd==1),],mu1[(bimodal_hv$indd==1)],mu2[(bimodal_hv$indd==1)],sig1[(bimodal_hv$indd==1)],sig2[(bimodal_hv$indd==1)],pi[(bimodal_hv$indd==1)],D[(bimodal_hv$indd==1),(bimodal_hv$indd==1)])
 ```
+### Output
+bimodal_parameters$mu1 = Mean parameter of the lower mode.<br />
+bimodal_parameters$mu2 = Mean parameter of the larger mode.<br />
+bimodal_parameters$tau1 = $\tau_1^2$ parameter of RIBBON bimodal.<br />
+bimodal_parameters$tau2 = Mean parameter of the larger mode.<br />
 ## Estimate parameters for the unimodal distribution
 ```
 unimodal_parameters <- estimate_bimodal(cpm_data[(bimodal_hv$indd==0),])
